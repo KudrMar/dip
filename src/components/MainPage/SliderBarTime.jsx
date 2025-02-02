@@ -1,4 +1,4 @@
-import React, { useState, useRef  } from "react";
+import React, { useState  } from "react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,18 +6,15 @@ import { filterChange } from '../Redux/filter';
 const SliderBarTime = ({ param }) => {
     const {fromHour, toHour } = param; 
     const dispatch = useDispatch();
-    const stateFrom  = useSelector((state) => state.filter[fromHour] * 60);
-    const stateTo = useSelector((state) => state.filter[toHour] * 60);
-
-    // const initialValues = useRef([0, 1440]);
+    const stateFrom  = useSelector((state) => state.filter[fromHour]);
+    const stateTo = useSelector((state) => state.filter[toHour]);
 
     const [stateRange, setPriceRange] = useState([stateFrom, stateTo]);
 
-
     const handleSliderChange = (valuesState) => {
         setPriceRange(valuesState);
-        dispatch(filterChange({ name: [fromHour], value: Math.floor(valuesState[0] / 60)}));
-        dispatch(filterChange({ name: [toHour], value: Math.floor(valuesState[1] / 60)}));
+        dispatch(filterChange({ name: [fromHour], value: Math.floor(valuesState[0])}));
+        dispatch(filterChange({ name: [toHour], value: Math.floor(valuesState[1])}));
     };
 
     const formatTime = (minutes) => {
@@ -32,7 +29,6 @@ const SliderBarTime = ({ param }) => {
                 range
                 min = {0}
                 max= {1440}
-                // defaultValue={initialValues.current} 
                 value={stateRange} 
                 onChange={handleSliderChange}
                 handleStyle={{
@@ -51,8 +47,6 @@ const SliderBarTime = ({ param }) => {
                     height: "10px",
                     borderRadius: "8px"
                     }}
-                  
-                
             />
             <div className="sidebar-searchtickets-parammenu-prices-values" >
                 <span style={{ position: "absolute", transform: "translateX(-50%)", left: "0%" }}>{formatTime(0)}</span> 

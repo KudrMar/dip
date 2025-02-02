@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
-import './AppSecondPage.css';
+import './SearchTrainPage.css';
+import './SelectSeatsPage.css';
 import HomePage from './components/HomePage/HomePage';
 import SearchTrain from './components/SearchTrainPage/SearchTrain';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -8,7 +9,8 @@ import Footer from './components/MainPage/Footer';
 import HeaderLogo from './components/MainPage/HeaderLogo';
 import { Provider } from "react-redux";
 import store from './components/Redux/store'; 
-import ChoseSeats from './components/ChoseSeatsPage/ChoseSeats';
+import SelectSeats from './components/SelectSeatsPage/SelectSeats';
+import SelectPassengers from './components/SelectPassengers/SelectPassengers';
 function App() {
   return (
     <Provider store={store}>
@@ -17,7 +19,9 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/trains" element={<SearchTrain/>} />
-        <Route path="/seats" element={<ChoseSeats/>} />
+        <Route path="/seats" element={<SelectSeats/>} />
+        <Route path="/passengers" element={<SelectPassengers/>} />
+        
         {/* <Route path="*" element={<NotFound />} /> */} 
       </Routes>
       <Footer/>

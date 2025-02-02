@@ -1,7 +1,9 @@
 import { useNavigate } from 'react-router';
-
+import { fetchSeats, trainAdd } from '../Redux/seats';
+import { useDispatch } from 'react-redux';
 const ResultSearchTickets = ({ train }) => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     let fromDateTime = train.departure.from.datetime;
     let toDateTime = train.departure.to.datetime;
@@ -20,8 +22,10 @@ const ResultSearchTickets = ({ train }) => {
     const getHours = (msc) => new Date(msc).getHours();
     const getMinutes = (msc) => (new Date(msc).getMinutes() < 10 ? '0' : '') + new Date(msc).getMinutes();
 
-    const setTrainIdEvent = (event) => {
+    const setTrainEvent = (event) => {
         event.preventDefault();
+        dispatch(trainAdd(train));
+        dispatch(fetchSeats());
         navigate('/seats');
     };
 
@@ -135,7 +139,7 @@ const ResultSearchTickets = ({ train }) => {
                     <div className="result-search-tickets-route-button-container">
                         <button className="result-search-tickets-route-button-choseTrain"
                             type="button"
-                            onClick={setTrainIdEvent}
+                            onClick={setTrainEvent}
                         >Выбрать места
                         </button>
                     </div>

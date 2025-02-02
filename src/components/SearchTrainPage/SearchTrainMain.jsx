@@ -86,9 +86,9 @@ export default function SearchTrainMain() {
 
 
 			<div className="main-searchTickets-block-list">
-				{trains.map((train, index) => (
+				{trains && (trains.map((train, index) => (
 					<ResultSearchTickets train={train} key={index} />
-				))}
+				)))}
 			</div>
 
 			<div className="main-searchTickets-pageslist">

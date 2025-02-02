@@ -921,6 +921,14 @@
 
 }
 
+.result-search-tickets-route-time-to-mid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center
+
+}
+
 .result-search-tickets-arrowRight {
   background-image: url(./img/ts_yellowRightArrow.svg);
   border: none;
@@ -930,6 +938,7 @@
   width: 30px;
   height: 20px;
   display: flex;
+
 }
 
 .result-search-tickets-arrowLeft {

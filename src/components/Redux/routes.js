@@ -322,7 +322,7 @@ export const fetchRoutes = createAsyncThunk(
     //                  "fourth": {
     //                      "top_price": 770,
     //                      "bottom_price": 533}}}}]};
-    //   return data;
+    //  return data;
 
       try {
          const response = await fetch(url);

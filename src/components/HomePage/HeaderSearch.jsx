@@ -16,7 +16,6 @@ export default function HomePageForm({ className }) {
    const dateEnd = useSelector((state) => state.filter.date_end);
 
    const handleSubmit = (event) => {
-   //   dispatch(filterChange({ name: 'date_start', value: start }));
       event.preventDefault();
       dispatch(filterChange({ name: 'offset', value: 0 }));
       dispatch(fetchRoutes());
@@ -85,7 +84,7 @@ export default function HomePageForm({ className }) {
                <div className={"shearch-form-item-" + className}>
                   <div className={"shearch-form-item-imputblock-" + className}>
                      <div className="search-form-direction">
-                        <label className="search-form-direction-title search-form-title">Направление</label>
+                        <div className="search-form-direction-title search-form-title">Направление</div>
                         <div className="search-form-direction-input search-form-input">
                            <div className="search-form-direction-input-from search-form-input-from">
                               <InputCities placeholder="Откуда" direction="cityFrom" />
@@ -97,7 +96,7 @@ export default function HomePageForm({ className }) {
                         </div>
                      </div>
                      <div className="search-form-dates">
-                        <label className="search-form-dates-title search-form-title">Дата</label>
+                        <div className="search-form-dates-title search-form-title">Дата</div>
                         <div className="search-form-dates-input search-form-input">
                            <div className="search-form-dates-input-from search-form-input-from">
                               <DatePicker

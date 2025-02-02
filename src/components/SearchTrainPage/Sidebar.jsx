@@ -8,6 +8,7 @@ import { filterChange } from '../Redux/filter';
 import SliderBar from "../MainPage/SliderBar";
 import SliderBarTime from "../MainPage/SliderBarTime";
 import moment from "moment";
+import { fetchSeats } from '../Redux/seats';
 
 function Sidebar() {
 	const filter = useSelector((state) => state.filter);
@@ -33,7 +34,7 @@ function Sidebar() {
 	}, [dateEnd]);
 
 	const handleChangeDate = (name, date) => {
-		const dateCheck = moment(date, "DD.MM.YYYY", true); // Парсим дату
+		const dateCheck = moment(date, "DD.MM.YYYY", true);
 		if (dateCheck.isValid()) {
 			const str = date.toLocaleDateString();
 			const format = `${str.slice(-4)}-${str.slice(3, 5)}-${str.slice(0, 2)}`;
@@ -49,7 +50,6 @@ function Sidebar() {
 
 	const Input = forwardRef(({ value, onClick, onChange }, ref) => (
 		<input
-			// mask="99/99/9999"
 			className="sidebar-form-search-input-block"
 			type="text"
 			placeholder="ДД/ММ/ГГ"
@@ -71,6 +71,7 @@ function Sidebar() {
 
 	const sendFilter = (optionName, optionValue) => {
 		dispatch(filterChange({ name: optionName, value: optionValue }))
+		dispatch(fetchSeats());
 	};
 
 	const [filter_have_second_class, setFilter_have_second_class] = useState(filter.have_second_class);
@@ -128,7 +129,7 @@ function Sidebar() {
 		<div className="sidebar-searchtickets">
 			<div className="sidebar-searchtickets-parammenu">
 				<form className="sidebar-searchtickets-parammenu-dataFrom">
-					<label className="sidebar-searchtickets-dates-title sidebar-form-title">Дата поездки</label>
+					<div className="sidebar-searchtickets-dates-title sidebar-form-title">Дата поездки</div>
 					< div className="sidebar-searchtickets-dates-input-from sidebar-form-input-from" >
 						<DatePicker
 							dateFormat="dd.MM.yyyy"
@@ -142,7 +143,7 @@ function Sidebar() {
 						/>
 						<div className="sidebar-searchtickets-dates-input-over-calendar" />
 					</div>
-					<label className="sidebar-searchtickets-dates-title sidebar-form-title">Дата возвращения</label>
+					<div className="sidebar-searchtickets-dates-title sidebar-form-title">Дата возвращения</div>
 					<div className="sidebar-searchtickets-dates-input-to search-form-input-from" >
 						<DatePicker
 							dateFormat="dd.MM.yyyy"
@@ -162,49 +163,49 @@ function Sidebar() {
 						<div className="sidebar-searchtickets-parammenu-flag-icon-coupe sidebar-searchtickets-parammenu-flag-icon" />
 						<p className="sidebar-searchtickets-parammenu-flag-text">Купе</p>
 						<div className={"sidebar-searchtickets-parammenu-flag-control-" + filter_have_second_class}>
-							<input type="checkbox" className="sidebar-searchtickets-parammenu-flag-control-input" checked={filter.have_second_class} onChange={have_second_class} />
+							<input id="have_second_class" type="checkbox" className="sidebar-searchtickets-parammenu-flag-control-input" checked={filter.have_second_class} onChange={have_second_class} />
 						</div>
 					</div>
 					<div className="sidebar-searchtickets-parammenu-flag-plackart sidebar-searchtickets-parammenu-flag">
 						<div className="sidebar-searchtickets-parammenu-flag-icon-plackart sidebar-searchtickets-parammenu-flag-icon" />
 						<p className="sidebar-searchtickets-parammenu-flag-text">Плацкарт</p>
 						<div className={"sidebar-searchtickets-parammenu-flag-control-" + filter_have_third_class}>
-							<input type="checkbox" className="sidebar-searchtickets-parammenu-flag-control-input" checked={filter.have_third_class} onChange={have_third_class} />
+							<input id="have_third_class" type="checkbox" className="sidebar-searchtickets-parammenu-flag-control-input" checked={filter.have_third_class} onChange={have_third_class} />
 						</div>
 					</div>
 					<div className="sidebar-searchtickets-parammenu-flag-seats sidebar-searchtickets-parammenu-flag">
 						<div className="sidebar-searchtickets-parammenu-flag-icon-seats sidebar-searchtickets-parammenu-flag-icon" />
 						<p className="sidebar-searchtickets-parammenu-flag-text">Сидячий</p>
 						<div className={"sidebar-searchtickets-parammenu-flag-control-" + filter_have_fourth_class}>
-							<input type="checkbox" className="sidebar-searchtickets-parammenu-flag-control-input" checked={filter.have_fourth_class} onChange={have_fourth_class} />
+							<input id="have_fourth_class" type="checkbox" className="sidebar-searchtickets-parammenu-flag-control-input" checked={filter.have_fourth_class} onChange={have_fourth_class} />
 						</div>
 					</div>
 					<div className="sidebar-searchtickets-parammenu-flag-lux sidebar-searchtickets-parammenu-flag">
 						<div className="sidebar-searchtickets-parammenu-flag-icon-lux sidebar-searchtickets-parammenu-flag-icon" />
 						<p className="sidebar-searchtickets-parammenu-flag-text">Люкс</p>
 						<div className={"sidebar-searchtickets-parammenu-flag-control-" + filter_have_first_class}>
-							<input type="checkbox" className="sidebar-searchtickets-parammenu-flag-control-input" checked={filter.have_first_class} onChange={have_first_class} />
+							<input id="have_first_class" type="checkbox" className="sidebar-searchtickets-parammenu-flag-control-input" checked={filter.have_first_class} onChange={have_first_class} />
 						</div>
 					</div>
 					<div className="sidebar-searchtickets-parammenu-flags-wifi sidebar-searchtickets-parammenu-flag">
 						<div className="sidebar-searchtickets-parammenu-flags-icon-wifi sidebar-searchtickets-parammenu-flag-icon" />
 						<p className="sidebar-searchtickets-parammenu-flag-text">Wi-Fi</p>
 						<div className={"sidebar-searchtickets-parammenu-flag-control-" + filter_have_wifi}>
-							<input type="checkbox" className="sidebar-searchtickets-parammenu-flag-control-input" checked={filter.have_wifi} onChange={have_wifi} />
+							<input id="have_wifi" type="checkbox" className="sidebar-searchtickets-parammenu-flag-control-input" checked={filter.have_wifi} onChange={have_wifi} />
 						</div>
 					</div>
 					<div className="sidebar-searchtickets-parammenu-flags-express sidebar-searchtickets-parammenu-flag">
 						<div className="sidebar-searchtickets-parammenu-flags-icon-express sidebar-searchtickets-parammenu-flag-icon" />
 						<p className="sidebar-searchtickets-parammenu-flag-text">Экспресс</p>
 						<div className={"sidebar-searchtickets-parammenu-flag-control-" + filter_have_express}>
-							<input type="checkbox" className="sidebar-searchtickets-parammenu-flag-control-input" checked={filter.have_express} onChange={have_express} />
+							<input id="have_express" type="checkbox" className="sidebar-searchtickets-parammenu-flag-control-input" checked={filter.have_express} onChange={have_express} />
 						</div>
 					</div>
 				</div>
 
 
 				<form className="sidebar-searchtickets-parammenu-prices">
-					<label className="sidebar-searchtickets-parammenu-prices-title">Стоимость</label>
+					<div className="sidebar-searchtickets-parammenu-prices-title">Стоимость</div>
 					<div className="sidebar-searchtickets-parammenu-prices-slider-title">
 						<span>от</span>
 						<span>до</span>
@@ -216,14 +217,14 @@ function Sidebar() {
 				<form className="sidebar-searchtickets-parammenu-time">
 					<div className="sidebar-searchtickets-parammenu-time-title">
 						<div className="sidebar-searchtickets-parammenu-time-title-image-right" />
-						<label className="sidebar-searchtickets-parammenu-time-title-text">Туда</label>
+						<div className="sidebar-searchtickets-parammenu-time-title-text">Туда</div>
 						<div className={"sidebar-searchtickets-parammenu-time-title-imageColapse-" + isCollapsedStart} onClick={handleCollapseClickStart} />
 					</div>
 					{!isCollapsedStart && (
 						<div className="sidebar-searchtickets-parammenu-time-colapse">
-							<label className="sidebar-searchtickets-parammenu-time-title-to">Время отбытия</label>
+							<div className="sidebar-searchtickets-parammenu-time-title-to">Время отбытия</div>
 							<SliderBarTime param={params_departure_hour_start} />
-							<label className="sidebar-searchtickets-parammenu-time-title-to-back">Время прибытия</label>
+							<div className="sidebar-searchtickets-parammenu-time-title-to-back">Время прибытия</div>
 							<SliderBarTime param={params_arrival_hour_start} />
 						</div>
 					)}
@@ -233,14 +234,14 @@ function Sidebar() {
 				<form className="sidebar-searchtickets-parammenu-time">
 					<div className="sidebar-searchtickets-parammenu-time-title">
 						<div className="sidebar-searchtickets-parammenu-time-title-image-left" />
-						<label className="sidebar-searchtickets-parammenu-time-title-text">Обратно</label>
+						<div className="sidebar-searchtickets-parammenu-time-title-text">Обратно</div>
 						<div className={"sidebar-searchtickets-parammenu-time-title-imageColapse-" + isCollapsedStart} onClick={handleCollapseClickEnd} />
 					</div>
 					{!isCollapsedEnd && (
 						<div className="sidebar-searchtickets-parammenu-time-colapse">
-							<label className="sidebar-searchtickets-parammenu-time-title-to">Время отбытия</label>
+							<div className="sidebar-searchtickets-parammenu-time-title-to">Время отбытия</div>
 							<SliderBarTime param={params_departure_hour_end} />
-							<label className="sidebar-searchtickets-parammenu-time-title-to-back">Время прибытия</label>
+							<div className="sidebar-searchtickets-parammenu-time-title-to-back">Время прибытия</div>
 							<SliderBarTime param={params_arrival_hour_end} />
 						</div>
 					)}

@@ -34,7 +34,7 @@ export default function Footer() {
                     <div className="footer-subscribe-title footer-contacts-title-head">Подписка</div>
                     <form className="footer-subscribe-form">
 
-                        <label>Будьте в курсе событий</label>
+                        <div>Будьте в курсе событий</div>
                         <div className="footer-subscribe-contener">
                             <input className="footer-subscribe-input" placeholder="e-mail"
                                 type="email" id="footer-subscription"
