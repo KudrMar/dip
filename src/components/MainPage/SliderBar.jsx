@@ -22,11 +22,10 @@ const SliderBar = () => {
         <div className="sidebar-searchtickets-parammenu-price-slider">
             <Slider
                 range
-                min={0} // Минимальное значение
-                max={10000} // Максимальное значение
-              //  defaultValue={initialValues.current} // Начальные значения
-                value={priceRange} // Текущие значения
-                onChange={handleSliderChange} // Обработчик изменения
+                min={0}
+                max={10000} 
+                value={priceRange} 
+                onChange={handleSliderChange} 
                 handleStyle={{
                     height: "24px",
                     width: "24px",

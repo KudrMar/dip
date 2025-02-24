@@ -41,7 +41,8 @@ export default function SeatsMap({ coachid, seatsList, seatsType }) {
         const totalSeatsLength = Object.values(seats).reduce((sum, seatsArray) => sum + seatsArray.length, 0);
         if (seats[coachid] && seats[coachid].some(item => item.id === seatIndex)) {
             dispatch(seatsItemUnSelect({ id: coachid, seatIndex }));
-        } else if (totalSeatsLength < seatsCount.adult + seatsCount.child) {
+        } else if (totalSeatsLength < seatsCount.adult + seatsCount.child) 
+        {
             dispatch(seatsItemSelect({ id: coachid, seatIndex, price: getPrice(seatIndex) }));
         }
     };
@@ -63,7 +64,9 @@ export default function SeatsMap({ coachid, seatsList, seatsType }) {
 
     const { getTotalPrice } = Price()
     useEffect(() => {
-        dispatch(setTotalPrice(getTotalPrice()));
+        const propertyToChange = 'total';
+        const value = getTotalPrice();
+        dispatch(setTotalPrice({ value, propertyToChange }));
       }, [seats]); 
 
 

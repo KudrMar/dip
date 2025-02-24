@@ -33,7 +33,7 @@ export default function LastTicket({ ticket }) {
 			</div>
 			<div className="sidebar-searchtickets-last-ticket-price">
 				<div className="sidebar-searchtickets-last-ticket-price-ot">от</div>
-				<div className="sidebar-searchtickets-last-ticket-price-amount">{ticket.departure.min_price}</div>
+				<div className="sidebar-searchtickets-last-ticket-price-amount">{ticket.departure.min_price.toLocaleString()}</div>
 				<div className="result-search-tickets-route-minPrices-item-rubImage" />
 			</div>
 			</div>

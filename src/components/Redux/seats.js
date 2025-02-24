@@ -60,7 +60,11 @@ const initialState = {
       baby: 0,
    },
    services: {},
-   totalPrice: 0
+   totalPrice: {
+      adult: 0,
+      child: 0,
+      total: 0,
+   }
 };
 
 const seats = createSlice({
@@ -129,8 +133,8 @@ const seats = createSlice({
       },
 
       setTotalPrice: (state, action) => {
-         const value = action.payload;
-         state.totalPrice = value;
+         const { value, propertyToChange } = action.payload;
+         state.totalPrice[propertyToChange] = value;
       },
 
 

@@ -1,4 +1,4 @@
-.main-SelectSeats-centerSection {
+.main-centerSection {
   display: flex;
   width: 100%;
   background-color: #F7F5F9;
@@ -6,7 +6,7 @@
   box-sizing: border-box;
 }
 
-.main-SelectSeats-centerSection-in {
+.main-centerSection-in {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -996,3 +996,21 @@
   text-decoration-skip-ink: none;
 
 }
+
+.main-selectSeats-nextPage-container-buttonincorrect {
+  height: 60px;
+  width: 222px;
+  border: none;
+  border-radius: 5px;
+  background-color: #928F94;
+  color: #FFFFFF;
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28.13px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+
+}
+

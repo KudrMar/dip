@@ -64,7 +64,7 @@ const ProgressLineCost = ({ className }) => {
             <div className={"progressNav-item " + classNameColorCheck}>
                <p className="progressNav-item-step">4</p>
                <p className="progressNav-item-text">Проверка</p>
-               <div className="progressNav-item-pic"/>
+               {/* <div className="progressNav-item-pic"/> */}
             </div>
          </div>
          <div className={"progressNav-blockYBlack " + theLastBlockColor}></div>

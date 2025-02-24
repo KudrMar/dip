@@ -15,7 +15,9 @@ export default function Coach({ coach, seatsList }) {
 
         const { getTotalPrice } = Price()
         useEffect(() => {
-            dispatch(setTotalPrice(getTotalPrice()));
+            const propertyToChange = 'total';
+            const value = getTotalPrice();
+            dispatch(setTotalPrice({ value, propertyToChange }));
           }, [services]); 
 
     return (
@@ -134,10 +136,10 @@ export default function Coach({ coach, seatsList }) {
                 seatsType={coach.class_type}
             />
 
-            {totalPrice > 0 && (
+            {totalPrice.total > 0 && (
                 <div className="main-selectSeats-carriage-totalPrice">
                     <div className="main-selectSeats-carriage-totalPrice-value">
-                        {totalPrice.toLocaleString()}
+                        {totalPrice.total.toLocaleString()}
                     </div>
 
                     <div className="main-selectSeats-carriage-totalPrice-image">

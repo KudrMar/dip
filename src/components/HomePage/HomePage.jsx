@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import HeaderSearch from './HeaderSearch';
 import AboutUs from './AboutUs';
@@ -7,6 +7,15 @@ import Feedbacks from './Feedbacks';
 
 
 function Main() {
+	useEffect(() => {
+		const hash = window.location.hash; 
+		if (hash) {
+		  const element = document.querySelector(hash); 
+		  if (element) {
+			element.scrollIntoView({ behavior: 'smooth' });
+		  }
+		}
+	  }, []);	
 	return (
 
 		<div className = "main">

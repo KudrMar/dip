@@ -1,24 +1,24 @@
 import React from 'react';
 
 import HeaderSearch from '../HomePage/HeaderSearch';
-import Sidebar from '../SearchTrainPage/Sidebar';
-import SelectSeatsMain from '../SelectSeatsPage/SelectSeatsMain';
+import SidebarTickets from '../SelectPassengers/SidebarTickets';
+import PaymentMain from '../PaymentPage/PaymentMain';
 import ProgressNav from '../MainPage/ProgressNav';
 
 
-function SelectSeats() {
+function Payment() {
     return (
         <div className="main-SearchTrain">
             <HeaderSearch className="nofirstpage-header" />
-            <ProgressNav className="1" />
+            <ProgressNav className="3" />
             <section className="main-centerSection">
                 <div className="main-centerSection-in">
-                    <Sidebar />
-                    <SelectSeatsMain />
+                    <SidebarTickets />
+                    <PaymentMain />
                 </div>
             </section>
         </div>
     );
 };
 
-export default SelectSeats;
+export default Payment;

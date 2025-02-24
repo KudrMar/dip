@@ -13,11 +13,13 @@ import {
     seatsCountChange
 } from '../Redux/seats';
 
+import {passengersAddEmpty, passengersClear} from '../Redux/passengers';
+
 export default function SelectSeatsMain() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const train = useSelector((state) => state.seats.train);
-    const { coachList, coachClass, coachItems, seatsCount } = useSelector(
+    const { coachList, coachClass, coachItems, seatsCount, seats} = useSelector(
         (state) => state.seats
     );
 
@@ -65,7 +67,7 @@ export default function SelectSeatsMain() {
         return 'минут';
     };
 
-    const [adultsCount, setAdultsCount] = useState(0);
+    const [adultsCount, setAdultsCount] = useState(seatsCount.adult);
     const [labelTextAdult, setlabelTextAdult] = useState("");
 
     const limitlabelTextAdult = 5;
@@ -95,7 +97,7 @@ export default function SelectSeatsMain() {
         }
     };
 
-    const [childCount, setChildCount] = useState(0);
+    const [childCount, setChildCount] = useState(seatsCount.child);
     const [labelTextChild, setlabelTextChild] = useState("");
 
     const limitlabelTextChild = 4;
@@ -125,7 +127,7 @@ export default function SelectSeatsMain() {
         }
     };
 
-    const [babyCount, setBabyCount] = useState(0);
+    const [babyCount, setBabyCount] = useState(seatsCount.baby);
 
 
     const handleInputChangeBaby = (e) => {
@@ -153,8 +155,31 @@ export default function SelectSeatsMain() {
 
     const handleClickNextPage = (event) => {
         event.preventDefault();
-        navigate('/passengers');
+        dispatch(passengersClear());
+        Array.from({ length: seatsCount.adult + seatsCount.child  + seatsCount.baby}).map((_, i) => {
+            dispatch(passengersAddEmpty({ id: i, adultcount: seatsCount.adult}))
+        })
+        if (allCorrect) {navigate('/passengers');}
+        //navigate('/passengers');
     };
+
+    const countSeats = () => {
+        let totalElements = 0;
+      
+        for (const key in seats) {
+          if (seats.hasOwnProperty(key)) {
+            const array = seats[key];
+            if (Array.isArray(array)) {
+              totalElements += array.length;
+            } 
+            
+          }
+        }
+      
+        return totalElements;
+      }
+
+    const allCorrect = countSeats() === seatsCount.adult + seatsCount.child;
 
     return (
         <div className="main-selectSeats">
@@ -339,7 +364,7 @@ export default function SelectSeatsMain() {
             </div>
             
             <div className="main-selectSeats-nextPage-container">
-                    <button type="button" className="main-selectSeats-nextPage-container-button"
+                    <button type="button" className={"main-selectSeats-nextPage-container-button" + (allCorrect ? "" : "incorrect")}
                          onClick={handleClickNextPage}
                     >
                         ДАЛЕЕ

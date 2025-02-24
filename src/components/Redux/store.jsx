@@ -3,6 +3,8 @@ import cities from "./cities";
 import routes from "./routes";
 import filter from "./filter";
 import seats from "./seats";
+import passengers from "./passengers";
+import order from "./order";
 
 export default  configureStore({
   reducer: {
@@ -10,5 +12,7 @@ export default  configureStore({
     routes: routes,
     filter: filter,
     seats: seats,
+    passengers: passengers,
+    order: order,
   },
 });

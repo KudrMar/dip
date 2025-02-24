@@ -218,7 +218,7 @@ function Sidebar() {
 					<div className="sidebar-searchtickets-parammenu-time-title">
 						<div className="sidebar-searchtickets-parammenu-time-title-image-right" />
 						<div className="sidebar-searchtickets-parammenu-time-title-text">Туда</div>
-						<div className={"sidebar-searchtickets-parammenu-time-title-imageColapse-" + isCollapsedStart} onClick={handleCollapseClickStart} />
+						<div className={"sidebar-imageColapse-" + isCollapsedStart} onClick={handleCollapseClickStart} />
 					</div>
 					{!isCollapsedStart && (
 						<div className="sidebar-searchtickets-parammenu-time-colapse">
@@ -235,7 +235,7 @@ function Sidebar() {
 					<div className="sidebar-searchtickets-parammenu-time-title">
 						<div className="sidebar-searchtickets-parammenu-time-title-image-left" />
 						<div className="sidebar-searchtickets-parammenu-time-title-text">Обратно</div>
-						<div className={"sidebar-searchtickets-parammenu-time-title-imageColapse-" + isCollapsedStart} onClick={handleCollapseClickEnd} />
+						<div className={"sidebar-imageColapse-" + isCollapsedEnd} onClick={handleCollapseClickEnd} />
 					</div>
 					{!isCollapsedEnd && (
 						<div className="sidebar-searchtickets-parammenu-time-colapse">

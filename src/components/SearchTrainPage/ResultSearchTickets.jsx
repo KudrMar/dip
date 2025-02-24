@@ -90,7 +90,7 @@ const ResultSearchTickets = ({ train }) => {
                                 <div className="result-search-tickets-route-minPrices-item-name">Сидячий</div>
                                 <div className="result-search-tickets-route-minPrices-item-seats">{train.available_seats_info.fourth}</div>
                                 <div className="result-search-tickets-route-minPrices-item-ot">от</div>
-                                <div className="result-search-tickets-route-minPrices-item-price">{train.departure.price_info.fourth.top_price}</div>
+                                <div className="result-search-tickets-route-minPrices-item-price">{train.departure.price_info.fourth.top_price.toLocaleString()}</div>
                                 <div className="result-search-tickets-route-minPrices-item-rubImage" />
                             </div>
                         }
@@ -101,7 +101,7 @@ const ResultSearchTickets = ({ train }) => {
                                 <div className="result-search-tickets-route-minPrices-item-name">Плацкарт</div>
                                 <div className="result-search-tickets-route-minPrices-item-seats">{train.available_seats_info.third}</div>
                                 <div className="result-search-tickets-route-minPrices-item-ot">от</div>
-                                <div className="result-search-tickets-route-minPrices-item-price">{train.departure.price_info.third.top_price}</div>
+                                <div className="result-search-tickets-route-minPrices-item-price">{train.departure.price_info.third.top_price.toLocaleString()}</div>
                                 <div className="result-search-tickets-route-minPrices-item-rubImage" />
                             </div>
                         }
@@ -112,7 +112,7 @@ const ResultSearchTickets = ({ train }) => {
                                 <div className="result-search-tickets-route-minPrices-item-name">Купе</div>
                                 <div className="result-search-tickets-route-minPrices-item-seats">{train.available_seats_info.second}</div>
                                 <div className="result-search-tickets-route-minPrices-item-ot">от</div>
-                                <div className="result-search-tickets-route-minPrices-item-price">{train.departure.price_info.second.top_price}</div>
+                                <div className="result-search-tickets-route-minPrices-item-price">{train.departure.price_info.second.top_price.toLocaleString()}</div>
                                 <div className="result-search-tickets-route-minPrices-item-rubImage" />
                             </div>
                         }
@@ -123,7 +123,7 @@ const ResultSearchTickets = ({ train }) => {
                                 <div className="result-search-tickets-route-minPrices-item-name">Люкс</div>
                                 <div className="result-search-tickets-route-minPrices-item-seats">{train.available_seats_info.first}</div>
                                 <div className="result-search-tickets-route-minPrices-item-ot">от</div>
-                                <div className="result-search-tickets-route-minPrices-item-price">{train.departure.price_info.first.top_price}</div>
+                                <div className="result-search-tickets-route-minPrices-item-price">{train.departure.price_info.first.top_price.toLocaleString()}</div>
                                 <div className="result-search-tickets-route-minPrices-item-rubImage" />
                             </div>
                         }
