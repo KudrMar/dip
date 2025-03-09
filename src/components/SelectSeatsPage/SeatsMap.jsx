@@ -67,7 +67,7 @@ export default function SeatsMap({ coachid, seatsList, seatsType }) {
         const propertyToChange = 'total';
         const value = getTotalPrice();
         dispatch(setTotalPrice({ value, propertyToChange }));
-      }, [seats]); 
+      }, [seats, dispatch, getTotalPrice]); 
 
 
     const seatSecond = () => {

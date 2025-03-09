@@ -62,7 +62,7 @@ const ResultSearchTickets = ({ train }) => {
                         <p className="result-search-tickets-route-time-to-station"></p>
                     </div>
                 </div>
-                {train.arrival &&
+                {/* {train.arrival &&
                     <div className="result-search-tickets-route-time-to">
                         <div className="result-search-tickets-route-time-to-left">
                             <div className="result-search-tickets-route-time-to-time">{getHours(fromDateTimeAr)}:{getMinutes(fromDateTimeAr)}</div>
@@ -79,7 +79,7 @@ const ResultSearchTickets = ({ train }) => {
                             <p className="result-search-tickets-route-time-to-station"></p>
                         </div>
                     </div>
-                }
+                } */}
             </div>
             <div className="result-search-tickets-route-minPrices">
 

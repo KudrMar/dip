@@ -1,7 +1,7 @@
 
 
 export default function LastTicket({ ticket }) {
-	const rr = 77;
+
 	return (
 		<div className="sidebar-searchtickets-last-ticket">
 			<div className="sidebar-searchtickets-last-ticket-top">

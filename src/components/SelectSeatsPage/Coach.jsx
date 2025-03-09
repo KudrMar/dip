@@ -18,7 +18,7 @@ export default function Coach({ coach, seatsList }) {
             const propertyToChange = 'total';
             const value = getTotalPrice();
             dispatch(setTotalPrice({ value, propertyToChange }));
-          }, [services]); 
+          }, [services, dispatch, getTotalPrice]); 
 
     return (
         <div className="main-selectSeats-carriage-item">

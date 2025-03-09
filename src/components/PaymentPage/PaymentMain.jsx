@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback  } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { userChange } from '../Redux/passengers';
@@ -43,9 +43,7 @@ export default function PaymentMain() {
         payment_method: "online"
     });
 
-    useEffect(() => {
-        validateForm();
-    }, [formData]);
+
 
     const [errors, setErrors] = useState({});
 
@@ -72,7 +70,7 @@ export default function PaymentMain() {
         return Object.keys(newErrors).length === 0; 
     }
 
-    const validateForm = () => {
+    const validateForm = useCallback(() => {
         const newErrors = {};
 
         if (!formData.first_name) {
@@ -92,8 +90,12 @@ export default function PaymentMain() {
         }
 
         return Object.keys(newErrors).length === 0; 
-    }
+    }, [formData]);
 
+    useEffect(() => {
+        validateForm();
+    }, [formData, validateForm]);
+    
     return (
         <div className="main-SelectPassengersMain">
 

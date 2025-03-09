@@ -46,26 +46,26 @@ export default function Footer() {
                     <h4 className="footer-subscribe-social-title footer-contacts-title-head">Подписывайся на нас</h4>
                     <div className="footer-subscribe-socials">
                         <div className="footer-subscribe-social footer-subscribe-social-youtube">
-                            <a href="#" className="footer-subscribe-social-link" />
+                            <a href="https://www.youtube.com" className="footer-subscribe-social-link" aria-label="Subscribe YouTube"> <i className="icon-subscribe" /> </a>
                         </div>
                         <div className="footer-subscribe-social footer-subscribe-social-in">
-                            <a href="#" className="footer-subscribe-social-link" />
+                            <a href="https://www.linkedin.com" className="footer-subscribe-social-link" aria-label="Subscribe linkedin"> <i className="icon-subscribe" /> </a>
                         </div>
                         <div className="footer-subscribe-social footer-subscribe-social-google">
-                            <a href="#" className="footer-subscribe-social-link" />
+                            <a href="https://www.google.com" className="footer-subscribe-social-link" aria-label="Subscribe google"> <i className="icon-subscribe" /> </a>
                         </div>
                         <div className="footer-subscribe-social footer-subscribe-social-facebook">
-                            <a href="#" className="footer-subscribe-social-link" />
+                            <a href="https://www.facebook.com" className="footer-subscribe-social-link" aria-label="Subscribe facebook"> <i className="icon-subscribe" /> </a>
                         </div>
                         <div className="footer-subscribe-social footer-subscribe-social-twitter">
-                            <a href="#" className="footer-subscribe-social-link" />
+                            <a href="https://twitter.com" className="footer-subscribe-social-link" aria-label="Subscribe twitter"> <i className="icon-subscribe" /> </a>
                         </div>
                     </div>
                 </div>
             </div>
             <div className="footer-bottom">
                 <div className="footer-bottom-logo">Лого</div>
-                <a className="footer-bottom-up" href="#headerLogo"></a>
+                <a className="footer-bottom-up" href="#headerLogo" aria-label="logo"></a>
                 <div className="footer-bottom-copyright">2018 WEB</div>
             </div>
         </section>

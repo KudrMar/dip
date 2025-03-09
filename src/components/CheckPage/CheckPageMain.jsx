@@ -10,7 +10,7 @@ export default function CheckPageMain() {
         navigate('/success');
     };
 
-    const { services } = useSelector((state) => state.seats);
+    // const { services } = useSelector((state) => state.seats);
 
     const train = useSelector((state) => state.seats.train);
     const { passengers, user } = useSelector((state) => state.passengers);
@@ -186,7 +186,7 @@ export default function CheckPageMain() {
                                 <div className="main-checkPage-passenger-name">{passenger.last_name + " " + passenger.first_name + " " + passenger.patronymic}</div>
                                 <div className="main-checkPage-passenger-info">Пол {passenger.gender ? " мужской" : " женский"}</div>
                                 <div className="main-checkPage-passenger-info">Дата рождения {passenger.birthday}</div>
-                                <div className="main-checkPage-passenger-info">{passenger.is_adult != "true" ? "Свидетельство о рождении " + passenger.document_data_n : "Паспорт РФ " + passenger.document_data_s + " " + passenger.document_data_n}</div>
+                                <div className="main-checkPage-passenger-info">{passenger.is_adult !== "true" ? "Свидетельство о рождении " + passenger.document_data_n : "Паспорт РФ " + passenger.document_data_s + " " + passenger.document_data_n}</div>
                             </div>
                         </div>
                     ))}

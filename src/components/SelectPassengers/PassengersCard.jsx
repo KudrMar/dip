@@ -109,7 +109,7 @@ export default function PassengersCard({ index }) {
             dispatch(passengersChange({ index, data: person_info}));
         };
 
-        if (updatedPassenger.warning != "") {setPerson_info((prevState) => {
+        if (updatedPassenger.warning !== "") {setPerson_info((prevState) => {
             const updatedPassengers = [...prevState];
             updatedPassengers[index] = updatedPassenger;
             return updatedPassengers;

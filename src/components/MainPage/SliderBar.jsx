@@ -1,4 +1,4 @@
-import React, { useState, useRef  } from "react";
+import React, { useState  } from "react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,7 +7,7 @@ const SliderBar = () => {
     const dispatch = useDispatch();
     const { price_from, price_to } = useSelector((state) => state.filter);
 
-    const initialValues = useRef([price_from, price_to]);
+    //const initialValues = useRef([price_from, price_to]);
 
     const [priceRange, setPriceRange] = useState([price_from, price_to]);
 

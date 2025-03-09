@@ -156,9 +156,9 @@ export default function SelectSeatsMain() {
     const handleClickNextPage = (event) => {
         event.preventDefault();
         dispatch(passengersClear());
-        Array.from({ length: seatsCount.adult + seatsCount.child  + seatsCount.baby}).map((_, i) => {
+        Array.from({ length: seatsCount.adult + seatsCount.child  + seatsCount.baby}).forEach((_, i) => (
             dispatch(passengersAddEmpty({ id: i, adultcount: seatsCount.adult}))
-        })
+        ))
         if (allCorrect) {navigate('/passengers');}
         //navigate('/passengers');
     };
