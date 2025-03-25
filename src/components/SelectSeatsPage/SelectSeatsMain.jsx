@@ -133,24 +133,6 @@ export default function SelectSeatsMain() {
         }
     }, []);
 
-    useEffect(() => {
-
-        let fakeEvent = {
-            target: {
-                value: `Взрослых — ${adultsCount}`
-            }
-        };
-        handleInputChangeAdult(fakeEvent);
-
-
-
-        // let fakeEvent = {
-        //     target: {
-        //         value: `Детских — ${childCount}`
-        //     }
-        // };
-        // handleInputChangeChild(fakeEvent);
-    }, [childCount, handleInputChangeChild]);
 
     const [babyCount, setBabyCount] = useState(seatsCount.baby);
 
