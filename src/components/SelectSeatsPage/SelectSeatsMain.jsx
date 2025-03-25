@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { InputMask } from '@react-input/mask';
 import Coach from './Coach';
 
@@ -73,7 +73,7 @@ export default function SelectSeatsMain() {
 
 
 
-    const handleInputChangeAdult = useCallback((e) => {
+    const handleInputChangeAdult = (e) => {
         const inputValue = e.target.value.replace('Взрослых — ', '');
         const value = parseInt(inputValue, 10);
 
@@ -96,7 +96,7 @@ export default function SelectSeatsMain() {
             );
             dispatch(seatsCountChange({ propertyToChange: 'adult', value: correctedValue }));
         }
-    }, []);
+    }
 
 
 
@@ -108,7 +108,7 @@ export default function SelectSeatsMain() {
 
     const limitlabelTextChild = 4;
 
-    const handleInputChangeChild = useCallback((e) => {
+    const handleInputChangeChild = (e) => {
         const inputValue = e.target.value.replace('Детских — ', '');
         const value = parseInt(inputValue, 10);
 
@@ -131,7 +131,7 @@ export default function SelectSeatsMain() {
             );
             dispatch(seatsCountChange({ propertyToChange: 'child', value: correctedValue }));
         }
-    }, []);
+    }
 
 
     const [babyCount, setBabyCount] = useState(seatsCount.baby);
