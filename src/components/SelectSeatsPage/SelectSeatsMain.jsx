@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { InputMask } from '@react-input/mask';
 import Coach from './Coach';
 
@@ -73,7 +73,7 @@ export default function SelectSeatsMain() {
 
 
 
-    const handleInputChangeAdult = (e) => {
+    const handleInputChangeAdult = useCallback((e) => {
         const inputValue = e.target.value.replace('Взрослых — ', '');
         const value = parseInt(inputValue, 10);
 
@@ -96,15 +96,9 @@ export default function SelectSeatsMain() {
             );
             dispatch(seatsCountChange({ propertyToChange: 'adult', value: correctedValue }));
         }
-    };
-    useEffect(() => {
-        const fakeEvent = {
-            target: {
-                value: `Взрослых — ${adultsCount}`
-            }
-        };
-        handleInputChangeAdult(fakeEvent);
-    }, [adultsCount]);
+    }, []);
+
+
 
 
     const [childCount, setChildCount] = useState(seatsCount.child);
@@ -114,7 +108,7 @@ export default function SelectSeatsMain() {
 
     const limitlabelTextChild = 4;
 
-    const handleInputChangeChild = (e) => {
+    const handleInputChangeChild = useCallback((e) => {
         const inputValue = e.target.value.replace('Детских — ', '');
         const value = parseInt(inputValue, 10);
 
@@ -137,16 +131,26 @@ export default function SelectSeatsMain() {
             );
             dispatch(seatsCountChange({ propertyToChange: 'child', value: correctedValue }));
         }
-    };
+    }, []);
 
     useEffect(() => {
-        const fakeEvent = {
+
+        let fakeEvent = {
             target: {
-                value: `Детских — ${childCount}`
+                value: `Взрослых — ${adultsCount}`
             }
         };
-        handleInputChangeChild(fakeEvent);
-    }, [childCount]);
+        handleInputChangeAdult(fakeEvent);
+
+
+
+        // let fakeEvent = {
+        //     target: {
+        //         value: `Детских — ${childCount}`
+        //     }
+        // };
+        // handleInputChangeChild(fakeEvent);
+    }, [childCount, handleInputChangeChild]);
 
     const [babyCount, setBabyCount] = useState(seatsCount.baby);
 
