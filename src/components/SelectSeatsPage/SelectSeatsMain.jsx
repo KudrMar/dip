@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { InputMask } from '@react-input/mask';
 import Coach from './Coach';
 
