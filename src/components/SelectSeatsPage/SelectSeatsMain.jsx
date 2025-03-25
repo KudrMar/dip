@@ -12,13 +12,13 @@ import {
     coachClassClear
 } from '../Redux/seats';
 
-import {passengersAddEmpty, passengersClear} from '../Redux/passengers';
+import { passengersAddEmpty, passengersClear } from '../Redux/passengers';
 
 export default function SelectSeatsMain() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const train = useSelector((state) => state.seats.train);
-    const { coachList, coachClass, coachItems, seatsCount, seats} = useSelector(
+    const { coachList, coachClass, coachItems, seatsCount, seats } = useSelector(
         (state) => state.seats
     );
 
@@ -70,14 +70,7 @@ export default function SelectSeatsMain() {
     const [labelTextAdult, setlabelTextAdult] = useState("");
 
     const limitlabelTextAdult = 5;
-    useEffect(() => {
-        const fakeEvent = {
-          target: {
-            value: `Взрослых — ${adultsCount}`
-          }
-        };
-        handleInputChangeAdult(fakeEvent);
-      }, []);
+
 
 
     const handleInputChangeAdult = (e) => {
@@ -104,18 +97,20 @@ export default function SelectSeatsMain() {
             dispatch(seatsCountChange({ propertyToChange: 'adult', value: correctedValue }));
         }
     };
+    useEffect(() => {
+        const fakeEvent = {
+            target: {
+                value: `Взрослых — ${adultsCount}`
+            }
+        };
+        handleInputChangeAdult(fakeEvent);
+    }, [adultsCount]);
+
 
     const [childCount, setChildCount] = useState(seatsCount.child);
     const [labelTextChild, setlabelTextChild] = useState("");
 
-    useEffect(() => {
-        const fakeEvent = {
-          target: {
-            value: `Детских — ${childCount}`
-          }
-        };
-        handleInputChangeChild(fakeEvent);
-      }, []);
+
 
     const limitlabelTextChild = 4;
 
@@ -144,6 +139,15 @@ export default function SelectSeatsMain() {
         }
     };
 
+    useEffect(() => {
+        const fakeEvent = {
+            target: {
+                value: `Детских — ${childCount}`
+            }
+        };
+        handleInputChangeChild(fakeEvent);
+    }, [childCount]);
+
     const [babyCount, setBabyCount] = useState(seatsCount.baby);
 
 
@@ -163,41 +167,41 @@ export default function SelectSeatsMain() {
         const filteredCoaches = coachList.filter(el => el.coach.class_type === classType);
         filteredCoaches.forEach(el => {
             if (!coachItems.includes(el.coach._id)) {
-              dispatch(coachItemsSelect({ id: el.coach._id }));
+                dispatch(coachItemsSelect({ id: el.coach._id }));
             }
-          });
+        });
     };
 
     const handleClickNextPage = (event) => {
         event.preventDefault();
         dispatch(passengersClear());
-        Array.from({ length: seatsCount.adult + seatsCount.child  + seatsCount.baby}).forEach((_, i) => (
-            dispatch(passengersAddEmpty({ id: i, adultcount: seatsCount.adult}))
+        Array.from({ length: seatsCount.adult + seatsCount.child + seatsCount.baby }).forEach((_, i) => (
+            dispatch(passengersAddEmpty({ id: i, adultcount: seatsCount.adult }))
         ))
-        if (allCorrect) { 
-             dispatch(coachClassClear({}));
-             navigate('/passengers');
+        if (allCorrect) {
+            dispatch(coachClassClear({}));
+            navigate('/passengers');
         }
     };
 
     const countSeats = () => {
         let totalElements = 0;
-      
-        for (const key in seats) {
-          if (seats.hasOwnProperty(key)) {
-            const array = seats[key];
-            if (Array.isArray(array)) {
-              totalElements += array.length;
-            } 
-            
-          }
-        }
-      
-        return totalElements;
-      }
 
-      const totalSeats = seatsCount.adult + seatsCount.child;
-      const allCorrect = countSeats() === totalSeats && totalSeats !== 0;
+        for (const key in seats) {
+            if (seats.hasOwnProperty(key)) {
+                const array = seats[key];
+                if (Array.isArray(array)) {
+                    totalElements += array.length;
+                }
+
+            }
+        }
+
+        return totalElements;
+    }
+
+    const totalSeats = seatsCount.adult + seatsCount.child;
+    const allCorrect = countSeats() === totalSeats && totalSeats !== 0;
 
 
 
@@ -280,7 +284,7 @@ export default function SelectSeatsMain() {
                     <div className="main-selectSeats-ticketType-adult main-selectSeats-ticketType-third">
                         <InputMask
                             mask="Взрослых — _"
-                            placeholder = "Взрослых — _"
+                            placeholder="Взрослых — _"
                             replacement={{ _: /\d/ }}
                             value={`Взрослых — ${adultsCount}`}
                             onChange={handleInputChangeAdult}
@@ -292,7 +296,7 @@ export default function SelectSeatsMain() {
                     <div className="main-selectSeats-ticketType-child main-selectSeats-ticketType-third">
                         <InputMask
                             mask="Детских — _"
-                            placeholder = "Детских — _"
+                            placeholder="Детских — _"
                             replacement={{ _: /\d/ }}
                             value={`Детских — ${childCount}`}
                             onChange={handleInputChangeChild}
@@ -305,7 +309,7 @@ export default function SelectSeatsMain() {
                     <div className="main-selectSeats-ticketType-baby main-selectSeats-ticketType-third">
                         <InputMask
                             mask="Детских «без места» — _"
-                            placeholder = "Детских «без места» — _"
+                            placeholder="Детских «без места» — _"
                             replacement={{ _: /\d/ }}
                             value={`Детских «без места» — ${babyCount}`}
                             onChange={handleInputChangeBaby}
@@ -346,7 +350,7 @@ export default function SelectSeatsMain() {
                     </div>
                 </div>
 
-               {coachList.filter((el) => el.coach.class_type === coachClass).length > 0 && (
+                {coachList.filter((el) => el.coach.class_type === coachClass).length > 0 && (
 
                     <div className="main-selectSeats-carriage-top">
 
@@ -379,20 +383,20 @@ export default function SelectSeatsMain() {
                             key={el.coach._id}
                             coach={el.coach}
                             seatsList={el.seats}
-                           
+
                         />
                     ))
                 }
 
             </div>
-            
+
             <div className="main-selectSeats-nextPage-container">
-                    <button type="button" className={"main-selectSeats-nextPage-container-button" + (allCorrect ? "" : "incorrect")}
-                         onClick={handleClickNextPage}
-                    >
-                        ДАЛЕЕ
-                    </button>
-                </div>
+                <button type="button" className={"main-selectSeats-nextPage-container-button" + (allCorrect ? "" : "incorrect")}
+                    onClick={handleClickNextPage}
+                >
+                    ДАЛЕЕ
+                </button>
+            </div>
         </div>
     );
 }
