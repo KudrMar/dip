@@ -1,7 +1,6 @@
 # Getting Started with Create React App
 
-[![Build status](https://ci.appveyor.com/api/projects/status/3npoix6swveikek8/branch/main?svg=true)](https://ci.appveyor.com/project/KudrMar/dip3/branch/main)
-
+[![Build status](https://ci.appveyor.com/api/projects/status/vey73nw44y71ttoj?svg=true)](https://ci.appveyor.com/project/KudrMar/dip-j7eem)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

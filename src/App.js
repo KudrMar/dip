@@ -26,7 +26,7 @@ function App() {
     <BrowserRouter>
       <HeaderLogo/>
       <Routes>
-        <Route path="/dip3" element={<HomePage />} />
+        <Route path="/dip" element={<HomePage />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/trains" element={<SearchTrain/>} />
         <Route path="/seats" element={<SelectSeats/>} />
